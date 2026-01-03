@@ -125,7 +125,7 @@ npm install
 
 Create .env.local and set:
 
-NEXT_PUBLIC_API_URL=http://<backend-ip>:4000
+NEXT_PUBLIC_API_URL=http://backend-ip:4000
 
 Start the app:
 
