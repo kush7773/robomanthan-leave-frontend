@@ -1,36 +1,155 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Robomanthan Leave Management System – Frontend
 
-## Getting Started
+This repository contains the frontend application for the Robomanthan Leave & Employee Management System. The application is built using Next.js (App Router) and provides secure, role-based dashboards for Employees and Employers with a responsive user interface.
 
-First, run the development server:
+---
 
-```bash
+## Tech Stack
+
+- Next.js (App Router)
+- React
+- JavaScript
+- CSS
+- JWT-based Authentication
+- react-hot-toast for notifications
+
+---
+
+## Features
+
+Authentication:
+- Employee and Employer login
+- Forgot password and reset password flow
+- Secure session handling using cookies and browser storage
+- Middleware-based route protection
+
+Employee Module:
+- Dashboard with leave balance cards
+- Apply for leave
+- View leave history
+- Profile management
+- Responsive UI for mobile and desktop
+
+Employer Module:
+- Dashboard overview
+- Manage employees
+- Approve and reject leave requests
+- Attendance calendar
+- Reports with CSV downloads
+- Add new employees
+
+Reports:
+- Employee list export (CSV)
+- Leave history export (CSV)
+- Daily absentees export (CSV)
+
+---
+
+## Project Structure
+
+robomanthan-frontend/
+├── app/
+│   ├── login/
+│   ├── employee/
+│   │   ├── profile/
+│   │   └── components/
+│   ├── employer/
+│   │   ├── add-employee/
+│   │   ├── employees/
+│   │   └── components/
+│   ├── forgot-password/
+│   ├── reset-password/
+│   ├── layout.js
+│   └── page.js
+├── public/
+│   └── logo.png
+├── services/
+│   └── auth.js
+├── utils/
+│   ├── auth.js
+│   └── api.js
+├── middleware.js
+├── package.json
+├── package-lock.json
+└── README.md
+
+---
+
+## Environment Setup
+
+Create a file named .env.local in the project root and add:
+
+NEXT_PUBLIC_API_URL=http://localhost:4000
+
+Replace the URL with your backend IP address or domain when testing on another device or deploying to production.
+
+---
+
+## Running the Project Locally
+
+npm install  
+npm run dev  
+
+Open in browser:  
+http://localhost:3000
+
+---
+
+## Production Build
+
+npm run build  
+npm run start  
+
+---
+
+## Route Protection
+
+Public routes:
+- /login
+- /forgot-password
+- /reset-password
+
+Protected routes:
+- /employee/*
+- /employer/*
+
+Route protection is implemented using Next.js middleware and authentication cookies.
+
+---
+
+## Collaboration Setup
+
+git clone https://github.com/Ojas-Sinha/robomanthan-leave-management-system-frontend.git  
+cd robomanthan-leave-management-system-frontend  
+npm install  
+
+Create .env.local and set:
+
+NEXT_PUBLIC_API_URL=http://<backend-ip>:4000
+
+Start the app:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The frontend is production-ready and can be deployed on platforms that support Next.js production builds, such as Hostinger Node.js hosting. Environment variables must be configured in the hosting control panel.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Academic Note
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project was developed as part of an academic submission and demonstrates:
+- Modern frontend architecture
+- Secure authentication and authorization
+- Clean UI/UX design
+- Production-ready configuration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Author
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Robomanthan Leave Management System – Frontend  
+Developed by Ojas Sinha
