@@ -133,22 +133,6 @@ npm run dev
 
 ---
 
-## Deployment
-
-The frontend is production-ready and can be deployed on platforms that support Next.js production builds, such as Hostinger Node.js hosting. Environment variables must be configured in the hosting control panel.
-
----
-
-## Academic Note
-
-This project was developed as part of an academic submission and demonstrates:
-- Modern frontend architecture
-- Secure authentication and authorization
-- Clean UI/UX design
-- Production-ready configuration
-
----
-
 ## Author
 
 Robomanthan Leave Management System – Frontend  
