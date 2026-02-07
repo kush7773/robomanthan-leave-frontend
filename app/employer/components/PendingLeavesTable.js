@@ -16,8 +16,8 @@ export default function PendingLeavesTable({ leaves = [], onAction }) {
 
       const url =
         action === "approve"
-          ? `${API_BASE}/leaves/approve/${id}`
-          : `${API_BASE}/leaves/reject/${id}`;
+          ? `${API_BASE}/leaves/${id}/approve`
+          : `${API_BASE}/leaves/${id}/reject`;
 
       const res = await fetch(url, {
         method: "POST",

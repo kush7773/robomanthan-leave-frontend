@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { logout } from "@/utils/auth";
+import { logout } from "../../../utils/auth";
 
 const SECTIONS = [
   { id: "dashboard", label: "Dashboard" },
@@ -60,7 +60,7 @@ export default function Sidebar({ open, onClose }) {
   };
 
   const handleLogout = () => {
-    logout();
+    logout()
     router.push("/login");
   };
 

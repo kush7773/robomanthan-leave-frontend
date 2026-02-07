@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { clearAuth } from "@/utils/auth";
 
 const SECTIONS = [
   { id: "dashboard", label: "Dashboard" },
@@ -52,7 +51,7 @@ export default function Sidebar({ open, onClose }) {
   };
 
   const logout = () => {
-    clearAuth();
+    // clearAuth();
     router.push("/login");
   };
 
