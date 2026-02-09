@@ -21,7 +21,8 @@ export default function LeaveCards({ balances = [] }) {
         >
           <h4>{b.type} Leave</h4>
           <h2>{b.total - b.used}</h2>
-          <p>{b.used} used / {b.total} total</p>
+          <p>{b.total - b.used} remaining</p>
+          <small style={{ opacity: 0.8 }}>{b.used} used / {b.total} total</small>
         </div>
       ))}
     </div>

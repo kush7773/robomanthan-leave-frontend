@@ -31,9 +31,9 @@ export default function AddEmployeePage() {
         email,
         jobRole,
         balances: [
-          { type: "CASUAL", total: Number(casual) },
-          { type: "SICK", total: Number(sick) },
-          { type: "PAID", total: Number(paid) },
+          { type: "Casual", total: Number(casual) },
+          { type: "Sick", total: Number(sick) },
+          { type: "Paid", total: Number(paid) },
         ],
       };
 

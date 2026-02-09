@@ -5,7 +5,7 @@ import { getToken } from "@/utils/auth";
 import toast from "react-hot-toast";
 
 export default function ApplyLeaveForm() {
-  const [type, setType] = useState("SICK");
+  const [type, setType] = useState("Sick");
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
   const [reason, setReason] = useState("");
@@ -60,7 +60,7 @@ export default function ApplyLeaveForm() {
       setReason("");
       setFromDate("");
       setToDate("");
-      setType("SICK");
+      setType("Sick");
     } catch (err) {
       console.error(err);
       toast.error("Server error");
@@ -74,9 +74,9 @@ export default function ApplyLeaveForm() {
       <h3>Apply for Leave</h3>
 
       <select value={type} onChange={(e) => setType(e.target.value)}>
-        <option value="SICK">Sick</option>
-        <option value="CASUAL">Casual</option>
-        <option value="PAID">Paid</option>
+        <option value="Sick">Sick</option>
+        <option value="Casual">Casual</option>
+        <option value="Paid">Paid</option>
       </select>
 
       {/* FROM / TO */}

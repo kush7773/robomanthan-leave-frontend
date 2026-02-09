@@ -6,6 +6,7 @@ import { useRouter, usePathname } from "next/navigation";
 const SECTIONS = [
   { id: "dashboard", label: "Dashboard" },
   { id: "pending", label: "Pending Requests" },
+  { id: "approved", label: "Approved Leaves" },
   { id: "employees", label: "Employees" },
   { id: "reports", label: "Reports" },
 ];

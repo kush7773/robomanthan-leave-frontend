@@ -124,6 +124,12 @@ export default function EmployeeProfilePage() {
         >
           {saving ? "Saving..." : "Save Changes"}
         </button>
+
+        <a href="/employee/change-password" style={{ display: "inline-block", marginTop: "12px" }}>
+          <button className="secondary-btn">
+            Change Password
+          </button>
+        </a>
       </section>
     </div>
   );

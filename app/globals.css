@@ -81,7 +81,7 @@ body {
   background: #ffffff;
   color: #2563eb;
   font-weight: 600;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 /* Inputs */
@@ -160,16 +160,16 @@ body {
 }
 
 @media (max-width: 480px) {
-  .login-card{
+  .login-card {
     width: 90%;
     padding: 24px;
   }
 
-  .login-logo span{
+  .login-logo span {
     font-size: 22px;
   }
 
-  .login-logo img{
+  .login-logo img {
     width: 48px;
     height: 48px;
   }
@@ -267,7 +267,8 @@ body {
 
 .forgot-card button {
   padding: 10px;
-  background:linear-gradient(180deg, #2563eb, #1e40af);;
+  background: linear-gradient(180deg, #2563eb, #1e40af);
+  ;
   color: white;
   font-weight: 600;
   border-radius: 8px;
@@ -484,7 +485,7 @@ body {
 .sidebar-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   z-index: 1200;
 }
 
@@ -495,7 +496,8 @@ body {
   padding: 24px;
   border-right: 1px solid #eef0f4;
   z-index: 1300;
-  display: flex;            /* ✅ */
+  display: flex;
+  /* ✅ */
   flex-direction: column;
   height: 100%;
 }
@@ -775,6 +777,20 @@ body {
   font-weight: 600;
 }
 
+/* Status Badge */
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status-badge.approved {
+  background: #dcfce7;
+  color: #15803d;
+}
+
 /* Employer Buttons */
 
 .header-actions {
@@ -801,6 +817,20 @@ body {
   border: none;
   font-weight: 500;
   cursor: pointer;
+}
+
+.delete-btn {
+  background: #ef4444;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
 }
 
 .link-btn {
@@ -975,7 +1005,7 @@ body {
   background: #fff;
   padding: 24px;
   border-radius: 16px;
-  box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
   margin-bottom: 36px;
 }
 
@@ -1129,7 +1159,7 @@ body {
     padding: 16px;
   }
 
-  
+
   .leave-cards {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -1197,7 +1227,8 @@ body {
   cursor: pointer;
   position: relative;
   z-index: 1500;
-  width: 44px;          /* ✅ reserve space */
+  width: 44px;
+  /* ✅ reserve space */
   height: 44px;
   flex-shrink: 0;
 }
@@ -1251,7 +1282,7 @@ body {
     width: 280px;
     transition: left 0.3s ease;
   }
-  
+
 
   .sidebar.open {
     left: 0;
@@ -1287,7 +1318,7 @@ body {
     font-size: 26px;
   }
 
-  
+
   .table-card {
     padding: 18px;
   }
@@ -1300,7 +1331,7 @@ body {
   .data-table {
     min-width: 700px;
   }
-  
+
   .action-cell {
     flex-direction: column;
     gap: 8px;
@@ -1397,7 +1428,7 @@ body {
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
     margin-bottom: 12px;
-    
+
   }
 
   .pending-info strong {

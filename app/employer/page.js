@@ -6,6 +6,7 @@ import { getToken } from "@/utils/auth";
 import AttendanceCalendar from "./components/AttendanceCalendar";
 import StatCards from "./components/StatCards";
 import PendingLeavesTable from "./components/PendingLeavesTable";
+import ApprovedLeavesTable from "./components/ApprovedLeavesTable";
 import EmployeeTable from "./components/EmployeeTable";
 import ReportsSection from "./components/ReportsSection";
 
@@ -16,6 +17,7 @@ export default function EmployerPage() {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(true);
   const [pendingLeaves, setPendingLeaves] = useState([]);
+  const [approvedLeaves, setApprovedLeaves] = useState([]);
 
   const API_BASE = process.env.NEXT_PUBLIC_API_URL;
 
@@ -80,6 +82,30 @@ export default function EmployerPage() {
   }
 
   // ==========================
+  // LOAD APPROVED LEAVES
+  // ==========================
+  async function loadApprovedLeaves() {
+    try {
+      const token = getToken();
+
+      const res = await fetch(`${API_BASE}/leaves/history/all`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await res.json();
+      // Filter only approved leaves
+      const approved = Array.isArray(data)
+        ? data.filter((leave) => leave.status === "APPROVED")
+        : [];
+      setApprovedLeaves(approved);
+    } catch (err) {
+      console.error("Approved leaves load failed:", err);
+    }
+  }
+
+  // ==========================
   // INITIAL LOAD
   // ==========================
   useEffect(() => {
@@ -87,6 +113,7 @@ export default function EmployerPage() {
       loadDashboard(),
       loadEmployees(),
       loadPendingLeaves(),
+      loadApprovedLeaves(),
     ]).finally(() => setLoading(false));
   }, []);
 
@@ -122,8 +149,16 @@ export default function EmployerPage() {
       <section id="pending">
         <PendingLeavesTable
           leaves={pendingLeaves}
-          onAction={loadPendingLeaves}
+          onAction={() => {
+            loadPendingLeaves();
+            loadApprovedLeaves();
+          }}
         />
+      </section>
+
+      {/* APPROVED LEAVES */}
+      <section id="approved">
+        <ApprovedLeavesTable leaves={approvedLeaves} />
       </section>
 
       {/* EMPLOYEES */}
