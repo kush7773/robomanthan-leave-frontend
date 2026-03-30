@@ -777,6 +777,34 @@ body {
   font-weight: 600;
 }
 
+.withdrawn {
+  color: #6b7280;
+  font-weight: 600;
+}
+
+/* Withdraw Button */
+.withdraw-btn {
+  background: transparent;
+  color: #ef4444;
+  border: 1px solid #ef4444;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.withdraw-btn:hover {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.withdraw-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
 /* Status Badge */
 .status-badge {
   display: inline-block;

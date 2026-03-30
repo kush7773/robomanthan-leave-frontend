@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import LeaveCards from "./components/LeaveCards";
 import ApplyLeaveForm from "./components/ApplyLeaveForm";
 import LeaveHistory from "./components/LeaveHistory";
@@ -12,15 +12,13 @@ export default function EmployeePage() {
   const [leaves, setLeaves] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  const loadData = useCallback(() => {
     const token = getToken();
     const API_BASE = process.env.NEXT_PUBLIC_API_URL;
 
-    // 1️⃣ Load dashboard data
+    // 1️⃣ Load dashboard data (balances + leaves)
     fetch(`${API_BASE}/dashboard/employee`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -28,20 +26,23 @@ export default function EmployeePage() {
         setLeaves(data.leaves || []);
       })
       .catch(console.error);
+  }, []);
 
-    // 2️⃣ Load profile ONLY for name
+  useEffect(() => {
+    const token = getToken();
+    const API_BASE = process.env.NEXT_PUBLIC_API_URL;
+
+    // 2️⃣ Load profile ONLY for name (once)
     fetch(`${API_BASE}/profile`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
-      .then((data) => {
-        setEmployeeName(data.name);
-      })
+      .then((data) => setEmployeeName(data.name))
       .catch(console.error)
       .finally(() => setLoading(false));
-  }, []);
+
+    loadData();
+  }, [loadData]);
 
   if (loading) return <p>Loading dashboard...</p>;
 
@@ -58,11 +59,11 @@ export default function EmployeePage() {
       </section>
 
       <section id="apply-leave">
-        <ApplyLeaveForm />
+        <ApplyLeaveForm onApplied={loadData} />
       </section>
 
       <section id="leave-history">
-        <LeaveHistory leaves={leaves} />
+        <LeaveHistory leaves={leaves} onWithdraw={loadData} />
       </section>
     </>
   );
