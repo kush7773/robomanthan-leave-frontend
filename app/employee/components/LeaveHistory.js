@@ -4,6 +4,21 @@ import { useState } from "react";
 import { getToken } from "@/utils/auth";
 import toast from "react-hot-toast";
 
+// Withdraw is allowed when:
+//  - leave is PENDING (any date), OR
+//  - leave is APPROVED AND it hasn't started yet (fromDate > today)
+function canWithdraw(leave) {
+  if (leave.status === "PENDING") return true;
+  if (leave.status === "APPROVED") {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const start = new Date(leave.fromDate);
+    start.setHours(0, 0, 0, 0);
+    return start > today;
+  }
+  return false;
+}
+
 export default function LeaveHistory({ leaves = [], onWithdraw }) {
   const [withdrawingId, setWithdrawingId] = useState(null);
 
@@ -74,7 +89,7 @@ export default function LeaveHistory({ leaves = [], onWithdraw }) {
                 </td>
                 <td className={l.status.toLowerCase()}>{l.status}</td>
                 <td>
-                  {(l.status === "PENDING" || l.status === "APPROVED") && (
+                  {canWithdraw(l) && (
                     <button
                       className="withdraw-btn"
                       onClick={() => handleWithdraw(l.id)}
@@ -110,7 +125,7 @@ export default function LeaveHistory({ leaves = [], onWithdraw }) {
               {l.status}
             </span>
 
-            {(l.status === "PENDING" || l.status === "APPROVED") && (
+            {canWithdraw(l) && (
               <button
                 className="withdraw-btn"
                 style={{ marginTop: "10px" }}
